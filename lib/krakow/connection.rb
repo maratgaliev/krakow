@@ -1,4 +1,5 @@
 require 'krakow'
+require 'Socket'
 
 module Krakow
 
@@ -293,7 +294,7 @@ module Krakow
       unless(@identify_defaults)
         @identify_defaults = {
           :short_id => Socket.gethostname,
-          :long_id => Socket.gethostbyname(Socket.gethostname).flatten.compact.first,
+          :long_id => Socket.gethostbyname("").flatten.compact.first,
           :user_agent => "krakow/#{Krakow::VERSION}",
           :feature_negotiation => true
         }
